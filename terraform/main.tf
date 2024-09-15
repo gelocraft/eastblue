@@ -1,0 +1,11 @@
+provider "digitalocean" {
+  token = var.do_token
+}
+
+resource "digitalocean_droplet" "droplet" {
+  image    = var.droplet_image
+  name     = var.droplet_name
+  region   = var.droplet_region
+  size     = var.droplet_size
+  ssh_keys = var.droplet_ssh_keys
+}
