@@ -21,7 +21,7 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
     env:
-      TF_VAR_do_token: ${{ secrets.DIGITALOCEAN_TOKEN }}
+      DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
