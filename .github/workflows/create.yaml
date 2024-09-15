@@ -38,4 +38,4 @@ jobs:
         run: terraform validate
 
       - name: Terraform Apply
-        run: terraform apply -var=droplet_size=${{ inputs.size }} -auto-approve
+        run: terraform apply -auto-approve
