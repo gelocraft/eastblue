@@ -1,6 +1,4 @@
-provider "digitalocean" {
-  token = var.do_token
-}
+provider "digitalocean" {}
 
 resource "digitalocean_droplet" "droplet" {
   image    = var.droplet_image
