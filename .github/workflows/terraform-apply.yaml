@@ -38,4 +38,4 @@ jobs:
         run: terraform validate
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve
+        run: DIGITALOCEAN_TOKEN="$DIGITALOCEAN_TOKEN" terraform apply -auto-approve
