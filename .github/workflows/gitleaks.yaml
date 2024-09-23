@@ -1,4 +1,4 @@
-name: gitleaks
+name: Scan Secret Leaks
 on:
   pull_request:
   push:
@@ -6,8 +6,7 @@ on:
   schedule:
     - cron: "0 10 * * *" # run once a day at 6 AM (philippine standard time)
 jobs:
-  scan:
-    name: gitleaks
+  gitleaks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
