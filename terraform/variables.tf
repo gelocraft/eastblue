@@ -25,6 +25,6 @@ variable "droplet_ssh_keys" {
 
 variable "do_token" {
   description = "digitalocean api access key"
-  type      = string
-  sensitive = true
+  type        = string
+  sensitive   = true
 }
