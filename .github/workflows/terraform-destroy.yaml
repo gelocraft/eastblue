@@ -27,5 +27,3 @@ jobs:
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
-        env:
-          DIGITALOCEAN_ACCESS_TOKEN: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
