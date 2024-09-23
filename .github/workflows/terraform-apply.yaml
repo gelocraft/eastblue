@@ -20,8 +20,6 @@ defaults:
 jobs:
   terraform:
     runs-on: ubuntu-latest
-    env:
-      DIGITALOCEAN_TOKEN: "${{ secrets.DIGITALOCEAN_TOKEN }}"
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
@@ -38,4 +36,4 @@ jobs:
         run: terraform validate
 
       - name: Terraform Apply
-        run: terraform apply -var="do_token=$DIGITALOCEAN_TOKEN" -auto-approve
+        run: terraform apply -auto-approve
