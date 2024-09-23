@@ -22,9 +22,3 @@ variable "droplet_ssh_keys" {
   description = "digitalocean droplet ssh key fingerprints"
   type        = list(string)
 }
-
-variable "do_token" {
-  description = "digitalocean api access key"
-  type        = string
-  sensitive   = true
-}
