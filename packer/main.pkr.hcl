@@ -20,7 +20,11 @@ build {
   provisioner "shell" {
     inline = [
       "apt update -y && apt upgrade -y",
+      "apt-get install -y software-properties-common",
+      "add-apt-repository ppa:neovim-ppa/stable",
       "apt install -y zsh neovim eza fzf ripgrep fd-find bat git-delta gcc tar unzip curl wget neofetch",
+      "update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60",
+      "update-alternatives --set editor /usr/bin/nvim",
       "useradd --create-home --groups sudo --shell /usr/bin/zsh geloman && passwd --delete geloman",
       "mkdir -p /home/geloman/.config /home/geloman/.personal /home/geloman/.development",
       "git clone --depth 1 https://github.com/geloman-likes-rust/dotfiles /home/geloman/.dotfiles",
