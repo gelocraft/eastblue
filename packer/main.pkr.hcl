@@ -21,7 +21,7 @@ build {
     inline = [
       "apt update -y && apt upgrade -y",
       "apt install -y zsh neovim eza fzf ripgrep fd-find bat git-delta gcc tar unzip curl wget neofetch",
-      "useradd --create-home --groups sudo --shell /usr/bin/zsh geloman",
+      "useradd --create-home --groups sudo --shell /usr/bin/zsh geloman && passwd --delete geloman",
       "mkdir -p /home/geloman/.config /home/geloman/.personal /home/geloman/.development",
       "git clone --depth 1 https://github.com/geloman-likes-rust/dotfiles /home/geloman/.dotfiles",
       "git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git /home/geloman/.oh-my-zsh",
@@ -30,9 +30,6 @@ build {
       "ln -s /home/geloman/.dotfiles/nvim /home/geloman/.config/",
       "ln -s /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf",
       "su geloman -c \"nvim --headless '+Lazy! restore' +qa\"",
-      "su geloman -c \"mkdir -p /home/geloman/.ssh\"",
-      "cp /root/.ssh/authorized_keys /home/geloman/.ssh/authorized_keys",
-      "sed -i '/\\W/ d' /root/.ssh/authorized_keys",
       "chown -R geloman:geloman /home/geloman"
     ]
   }
