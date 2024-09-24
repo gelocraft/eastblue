@@ -1,0 +1,22 @@
+name: Delete Machine Image
+
+on:
+  workflow_dispatch:
+
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    env:
+      DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+    steps:
+      - name: Get Snapshot ID
+        run: |
+          SNAPSHOT_ID=$(curl -X GET "https://api.digitalocean.com/v2/snapshots" \
+            -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \
+            | jq -r '.snapshots[] | select(.name == "eastblue-linux") | .id')
+          echo "SNAPSHOT_ID=$SNAPSHOT_ID" >> $GITHUB_ENV
+
+      - name: "Delete Snapshot-${{ env.SNAPSHOT_ID }}"
+        run: |
+          curl -X DELETE "https://api.digitalocean.com/v2/snapshots/$SNAPSHOT_ID" \
+            -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" --verbose
