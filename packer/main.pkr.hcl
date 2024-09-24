@@ -30,6 +30,9 @@ build {
       "ln -s /home/geloman/.dotfiles/nvim /home/geloman/.config/",
       "ln -s /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf",
       "su geloman -c \"nvim --headless '+Lazy! restore' +qa\"",
+      "su geloman -c \"mkdir -p /home/geloman/.ssh\"",
+      "cp /root/.ssh/authorized_keys /home/geloman/.ssh/authorized_keys",
+      "sed -i '/\\W/ d' /root/.ssh/authorized_keys",
       "chown -R geloman:geloman /home/geloman"
     ]
   }
