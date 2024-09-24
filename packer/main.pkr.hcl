@@ -20,11 +20,7 @@ build {
   provisioner "shell" {
     inline = [
       "apt update -y && apt upgrade -y",
-      "apt-get install -y software-properties-common",
-      "add-apt-repository ppa:neovim-ppa/stable",
-      "apt install -y zsh neovim eza fzf ripgrep fd-find bat git-delta gcc tar unzip curl wget neofetch",
-      "update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60",
-      "update-alternatives --set editor /usr/bin/nvim",
+      "apt install -y zsh eza fzf ripgrep fd-find bat git-delta gcc tar unzip curl wget neofetch",
       "useradd --create-home --groups sudo --shell /usr/bin/zsh geloman && passwd --delete geloman",
       "mkdir -p /home/geloman/.config /home/geloman/.personal /home/geloman/.development",
       "git clone --depth 1 https://github.com/geloman-likes-rust/dotfiles /home/geloman/.dotfiles",
@@ -34,6 +30,9 @@ build {
       "ln -s /home/geloman/.dotfiles/zsh/.zshrc /home/geloman/.zshrc",
       "ln -s /home/geloman/.dotfiles/nvim /home/geloman/.config/",
       "ln -s /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf",
+      "curl -s -JLO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz",
+      "tar xzf nvim-linux64.tar.gz && rm -rdf nvim-linux64.tar.gz",
+      "mv nvim-linux64/bin/nvim /usr/local/bin/nvim && rm -rdf nvim-linux64",
       "su geloman -c \"nvim --headless '+Lazy! restore' +qa\"",
       "chown -R geloman:geloman /home/geloman"
     ]
