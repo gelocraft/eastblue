@@ -25,9 +25,12 @@ build {
       "mkdir -p /home/geloman/.config /home/geloman/.personal /home/geloman/.development",
       "git clone --depth 1 https://github.com/geloman-likes-rust/dotfiles /home/geloman/.dotfiles",
       "git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git /home/geloman/.oh-my-zsh",
+      "git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm",
       "ln -s /home/geloman/.dotfiles/zsh/.zshrc /home/geloman/.zshrc",
       "ln -s /home/geloman/.dotfiles/nvim /home/geloman/.config/",
-      "ln -s /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf"
+      "ln -s /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf",
+      "nvim --headless '+Lazy! restore' +qa",
+      "chown -R geloman:geloman /home/geloman"
     ]
   }
 }
