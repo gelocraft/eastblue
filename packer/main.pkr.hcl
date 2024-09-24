@@ -31,9 +31,9 @@ build {
       "ln -s /home/geloman/.dotfiles/nvim /home/geloman/.config/",
       "ln -s /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf",
       "su geloman -c \"cd /home/geloman && curl -s -JLO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz\"",
-      "su geloman -c \"cd /home/geloman && tar xzf nvim-linux64.tar.gz && rm -rdf nvim-linux64.tar.gz\"",
+      "su geloman -c \"cd /home/geloman && tar xzf nvim-linux64.tar.gz && rm -rdf nvim-linux64.tar.gz && mkdir -p /home/geloman/.local/bin\"",
       "su geloman -c \"cd /home/geloman && mv nvim-linux64/bin/nvim /home/geloman/.local/bin/nvim && rm -rdf nvim-linux64\"",
-      "su geloman -c \"nvim --headless '+Lazy! restore' +qa\"",
+      "su geloman -c \"/home/geloman/.local/bin/nvim --headless '+Lazy! restore' +qa\"",
       "chown -R geloman:geloman /home/geloman"
     ]
   }
