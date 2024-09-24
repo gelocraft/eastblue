@@ -40,5 +40,5 @@ jobs:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
           TF_VAR_droplet_size: ${{ inputs.size }}
 
-      - name: DROPLET_IPV4_ADDRESS = ${{ env.DROPLET_IPV4_ADDRESS }}
+      - name: ${{ env.DROPLET_IPV4_ADDRESS }}
         run: echo $DROPLET_IPV4_ADDRESS
