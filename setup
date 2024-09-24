@@ -1,7 +1,7 @@
 #!/bin/sh
 
-apt-get update -y && apt-get upgrade -y
-apt-get install -y zsh neovim eza fzf ripgrep fd-find bat git-delta gcc tar unzip curl wget neofetch
+apt update -y && apt upgrade -y
+apt install -y zsh neovim eza fzf ripgrep fd-find bat git-delta gcc tar unzip curl wget neofetch
 
 useradd --create-home --groups sudo,docker --shell /usr/bin/zsh geloman
 mkdir -p /home/geloman/{.config,.personal,.development}
