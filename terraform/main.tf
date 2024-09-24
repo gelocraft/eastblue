@@ -7,7 +7,7 @@ resource "digitalocean_droplet" "droplet" {
   size      = var.droplet_size
   ssh_keys  = var.droplet_ssh_keys
   user_data = <<-EOF
-  #!/bin/sh
+  #!/bin/bash
   apt update -y && apt upgrade -y
   apt install -y zsh neovim eza fzf ripgrep fd-find bat git-delta gcc tar unzip curl wget neofetch
 
