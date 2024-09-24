@@ -22,7 +22,7 @@ build {
       "apt update -y && apt upgrade -y",
       "apt install -y zsh neovim eza fzf ripgrep fd-find bat git-delta gcc tar unzip curl wget neofetch",
       "useradd --create-home --groups sudo --shell /usr/bin/zsh geloman",
-      "mkdir -p /home/geloman/{.config,.personal,.development}",
+      "mkdir -p /home/geloman/.config /home/geloman/.personal /home/geloman/.development",
       "git clone --depth 1 https://github.com/geloman-likes-rust/dotfiles /home/geloman/.dotfiles",
       "git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git /home/geloman/.oh-my-zsh",
       "ln -s /home/geloman/.dotfiles/zsh/.zshrc /home/geloman/.zshrc",
