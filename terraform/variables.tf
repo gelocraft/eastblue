@@ -15,12 +15,12 @@ variable "droplet_size" {
 
 variable "droplet_snapshot" {
   description = "snapshot id of droplet snapshot from data resource"
-  type = string
+  type        = string
 }
 
 variable "droplet_snapshot_name" {
   description = "the name of the droplet snapshot"
-  type = string
+  type        = string
 }
 
 variable "droplet_region" {
