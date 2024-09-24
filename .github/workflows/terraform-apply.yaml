@@ -35,7 +35,7 @@ jobs:
       - name: Terraform Apply
         run: |
           terraform apply -auto-approve
-          DROPLET_IPV4_ADDRESS=$(terraform output -raw droplet_ipv4_address)
+          export DROPLET_IPV4_ADDRESS=$(terraform output -raw droplet_ipv4_address)
         env:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
           TF_VAR_droplet_size: ${{ inputs.size }}
