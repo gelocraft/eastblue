@@ -35,10 +35,10 @@ jobs:
       - name: Terraform Apply
         run: |
           terraform apply -auto-approve
-          export DROPLET_IPV4_ADDRESS=$(terraform output -raw droplet_ipv4_address)
+          echo "DROPLET_IPV4_ADDRESS=$(terraform output -raw droplet_ipv4_address)" >> $GITHUB_ENV
         env:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
           TF_VAR_droplet_size: ${{ inputs.size }}
 
-      - name: DROPLET_IPV4_ADDRESS = $DROPLET_IPV4_ADDRESS
-        run: echo "DROPLET_IPV4_ADDRESS = $DROPLET_IPV4_ADDRESS"
+      - name: DROPLET_IPV4_ADDRESS = ${{ env.DROPLET_IPV4_ADDRESS }}
+        run: echo $DROPLET_IPV4_ADDRESS
