@@ -8,11 +8,11 @@ packer {
 }
 
 source "digitalocean" "eastblue" {
-  image         = "ubuntu-24-04-x64"
-  snapshot_name = "eastblue-linux"
-  size          = "s-1vcpu-1gb"
-  region        = "sgp1"
-  ssh_username  = "root"
+  image        = "ubuntu-24-04-x64"
+  image_name   = "eastblue-linux"
+  size         = "s-1vcpu-1gb"
+  region       = "sgp1"
+  ssh_username = "root"
 }
 
 build {
@@ -25,9 +25,9 @@ build {
       "mkdir -p /home/geloman/{.config,.personal,.development}",
       "git clone --depth 1 https://github.com/geloman-likes-rust/dotfiles /home/geloman/.dotfiles",
       "git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git /home/geloman/.oh-my-zsh",
-      "ln /home/geloman/.dotfiles/zsh/.zshrc /home/geloman/.zshrc",
-      "ln /home/geloman/.dotfiles/nvim /home/geloman/.config/",
-      "ln /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf"
+      "ln -s /home/geloman/.dotfiles/zsh/.zshrc /home/geloman/.zshrc",
+      "ln -s /home/geloman/.dotfiles/nvim /home/geloman/.config/",
+      "ln -s /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf"
     ]
   }
 }
