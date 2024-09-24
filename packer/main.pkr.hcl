@@ -8,7 +8,7 @@ packer {
 }
 
 source "digitalocean" "eastblue" {
-  image         = "ubuntu-22-04-x64"
+  image         = "ubuntu-24-04-x64"
   snapshot_name = "eastblue-linux"
   size          = "s-1vcpu-1gb"
   region        = "sgp1"
