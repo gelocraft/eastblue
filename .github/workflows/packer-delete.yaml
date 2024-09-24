@@ -19,4 +19,5 @@ jobs:
       - name: "Delete Snapshot-${{ env.SNAPSHOT_ID }}"
         run: |
           curl -X DELETE "https://api.digitalocean.com/v2/snapshots/$SNAPSHOT_ID" \
-            -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" --verbose
+            -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \
+            -o "/dev/null" -s -w "status_code = %{http_code}\n"
