@@ -1,0 +1,23 @@
+name: Show Outputs
+
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: ./terraform
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Output
+        run: terraform output
