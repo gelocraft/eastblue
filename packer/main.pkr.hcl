@@ -26,6 +26,7 @@ build {
       "git clone --depth 1 https://github.com/geloman-likes-rust/dotfiles /home/geloman/.dotfiles",
       "git clone --depth 1 https://github.com/ohmyzsh/ohmyzsh.git /home/geloman/.oh-my-zsh",
       "git clone --depth 1 https://github.com/tmux-plugins/tpm /home/geloman/.tmux/plugins/tpm",
+      "ln -s /home/geloman/.dotfiles/.gitconfig /home/geloman/.gitconfig",
       "ln -s /home/geloman/.dotfiles/zsh/.zshrc /home/geloman/.zshrc",
       "ln -s /home/geloman/.dotfiles/nvim /home/geloman/.config/",
       "ln -s /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf",
