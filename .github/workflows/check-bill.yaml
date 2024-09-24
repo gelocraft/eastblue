@@ -19,5 +19,5 @@ jobs:
             "https://api.digitalocean.com/v2/customers/my/balance" | jq > '.month_to_date_usage')
           echo "MONTH_TO_DATE_USAGE=$MONTH_TO_DATE_USAGE" >> $GITHUB_ENV
 
-      - name: this month bill: ${{ env.MONTH_TO_DATE_USAGE }}
+      - name: "this month bill: ${{ env.MONTH_TO_DATE_USAGE }}"
         run: echo this month bill: ${{ env.MONTH_TO_DATE_USAGE }}
