@@ -29,7 +29,7 @@ build {
       "ln -s /home/geloman/.dotfiles/zsh/.zshrc /home/geloman/.zshrc",
       "ln -s /home/geloman/.dotfiles/nvim /home/geloman/.config/",
       "ln -s /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf",
-      "nvim --headless '+Lazy! restore' +qa",
+      "$(command -v nvim) --headless '+Lazy! restore' +qa",
       "chown -R geloman:geloman /home/geloman"
     ]
   }
