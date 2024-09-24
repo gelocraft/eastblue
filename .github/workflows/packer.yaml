@@ -1,0 +1,22 @@
+name: Create Machine Image
+
+on:
+  workflow_dispatch:
+
+defaults:
+  run:
+    working-directory: ./packer
+
+jobs:
+  packer:
+    runs-on: ubuntu-latest
+    env:
+      DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-packer@main
+
+      - name: Create Machine Image
+        run: |
+          packer init .
+          packer build .
