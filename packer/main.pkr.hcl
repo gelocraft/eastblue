@@ -30,8 +30,8 @@ build {
       "ln -s /home/geloman/.dotfiles/zsh/.zshrc /home/geloman/.zshrc",
       "ln -s /home/geloman/.dotfiles/nvim /home/geloman/.config/",
       "ln -s /home/geloman/.dotfiles/tmux/.tmux.conf /home/geloman/.tmux.conf",
-      "su geloman -c \"nvim --headless '+Lazy! restore' +qa\"",
-      "chown -R geloman:geloman /home/geloman"
+      "chown -R geloman:geloman /home/geloman",
+      "su geloman -c \"nvim --headless '+Lazy! restore' +qa\""
     ]
   }
 }
