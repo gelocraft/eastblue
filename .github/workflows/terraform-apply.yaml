@@ -8,6 +8,7 @@ on:
         type: choice
         default: s-1vcpu-1gb
         options:
+          - s-1vcpu-512mb-10gb
           - s-1vcpu-1gb
           - s-1vcpu-1gb-amd
           - s-1vcpu-2gb
