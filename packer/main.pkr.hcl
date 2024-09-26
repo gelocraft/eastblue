@@ -10,7 +10,7 @@ packer {
 source "digitalocean" "eastblue" {
   image         = "ubuntu-24-04-x64"
   snapshot_name = "eastblue-linux"
-  size          = "s-1vcpu-1gb"
+  size          = "s-1vcpu-512mb-10gb"
   region        = "sgp1"
   ssh_username  = "root"
 }
