@@ -3,18 +3,7 @@ name: Destroy DigitalOcean Droplet
 on:
   schedule:
     - cron: "0 16 * * *" # run once a day at 12 AM (philippine standard time)
-
   workflow_dispatch:
-    inputs:
-      size:
-        description: droplet size
-        type: choice
-        default: s-1vcpu-1gb
-        options:
-          - s-1vcpu-1gb
-          - s-1vcpu-1gb-amd
-          - s-1vcpu-2gb
-          - s-1vcpu-2gb-amd
 
 defaults:
   run:
@@ -35,8 +24,9 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
+      - run: echo "DROPLET_SIZE=$(terraform output -raw droplet_size)" >> $GITHUB_ENV
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         env:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
-          TF_VAR_droplet_size: ${{ inputs.size }}
+          TF_VAR_droplet_size: ${{ env.DROPLET_SIZE }}
