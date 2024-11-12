@@ -1,0 +1,7 @@
+---
+- name: Symlink .gitconfig
+  ansible.builtin.file:
+    src: "~/.dotfiles/.gitconfig"
+    dest: "~/.gitconfig"
+    state: link
+  become_user: geloman

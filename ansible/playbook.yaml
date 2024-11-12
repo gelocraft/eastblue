@@ -1,0 +1,39 @@
+- hosts: all
+  become: yes
+  pre_tasks:
+    - name: Update and Upgrade packages
+      when: ansible_distribution in ["Debian", "Ubuntu"]
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: yes
+
+    - name: Create User
+      ansible.builtin.user:
+        name: geloman
+        groups: sudo
+        create_home: true
+
+    - name: Clone user dotfiles
+      ansible.builtin.git:
+        repo: "https://github.com/geloman-likes-rust/dotfiles"
+        dest: "/home/geloman/.dotfiles"
+
+    - name: Setup user dotfiles
+      ansible.builtin.file:
+        path: /home/geloman/.dotfiles
+        state: directory
+        owner: geloman
+        group: geloman
+        recurse: yes
+
+  roles:
+    - common
+    - stylua
+    - docker
+    - terraform
+    - git
+    - zsh
+    - tmux
+    - neovim
+    - nodejs
+    - golang
