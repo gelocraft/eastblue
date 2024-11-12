@@ -1,3 +1,10 @@
+- name: Create XDG_CONFIG_HOME directory
+  ansible.builtin.file:
+    path: "~/.config"
+    state: directory
+    mode: "0755"
+  become_user: geloman
+
 - name: Symlink neovim config
   ansible.builtin.file:
     src: "~/.dotfiles/nvim"
