@@ -23,8 +23,5 @@ build {
   sources = ["source.digitalocean.eastblue"]
   provisioner "ansible" {
     playbook_file = "../ansible/playbook.yaml"
-    extra_arguments = [
-      "--roles-path", "../ansible/roles"
-    ]
   }
 }
