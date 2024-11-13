@@ -37,3 +37,4 @@
     - neovim
     - nodejs
     - golang
+    - lsp
