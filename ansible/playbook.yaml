@@ -32,6 +32,7 @@
     - common
     - stylua
     - docker
+    - minikube
     - terraform
     - git
     - zsh
