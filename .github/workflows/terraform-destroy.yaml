@@ -30,4 +30,4 @@ jobs:
         run: terraform destroy -auto-approve
         env:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
-          TF_VAR_droplet_size: ${{ env.DROPLET_SIZE }}
+          TF_VAR_droplet_size: $DROPLET_SIZE
