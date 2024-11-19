@@ -24,10 +24,10 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - run: echo "DROPLET_SIZE=$(terraform output -raw droplet_size)" >> $GITHUB_ENV
+      - run: echo "DROPLET_SIZE=$(terraform output -json | jq -r '.droplet_size.value // empty')" >> $GITHUB_ENV
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         env:
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
-          TF_VAR_droplet_size: $DROPLET_SIZE
+          TF_VAR_droplet_size: ${{ env.DROPLET_SIZE }}
