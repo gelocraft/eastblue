@@ -16,15 +16,17 @@
     - name: Clone user dotfiles
       ansible.builtin.git:
         repo: "https://github.com/geloman-likes-rust/dotfiles"
-        dest: "/home/geloman/.dotfiles"
+        dest: "~/.dotfiles"
+      become_user: geloman
 
-    - name: Setup user dotfiles
-      ansible.builtin.file:
-        path: /home/geloman/.dotfiles
-        state: directory
-        owner: geloman
-        group: geloman
-        recurse: yes
+    - name: Change dotfiles remote origin
+      ansible.builtin.git:
+        repo: "git@github.com:geloman-likes-rust/dotfiles"
+        dest: "~/.dotfiles"
+        remote: origin
+        clone: no
+        update: no
+      become_user: geloman
 
   roles:
     - common
