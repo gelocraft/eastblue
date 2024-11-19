@@ -24,7 +24,7 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - run: echo "DROPLET_SIZE=$(terraform output -raw droplet_size 2>/dev/null || echo "")" >> $GITHUB_ENV
+      - run: echo "DROPLET_SIZE=$(terraform output -raw droplet_size)" >> $GITHUB_ENV
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
