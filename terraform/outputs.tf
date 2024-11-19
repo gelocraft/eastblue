@@ -3,5 +3,5 @@ output "droplet_ipv4_address" {
 }
 
 output "droplet_size" {
-  value = try(digitalocean_droplet.droplet.size, null)
+  value = try(digitalocean_droplet.droplet.size, "")
 }
