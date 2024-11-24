@@ -1,7 +1,7 @@
 provider "digitalocean" {}
 
 locals {
-  droplet_size = var.droplet_image
+  droplet_size     = var.droplet_image
   droplet_snapshot = data.digitalocean_droplet_snapshot.eastblue.id
 }
 
