@@ -1,12 +1,7 @@
 provider "digitalocean" {}
 
-locals {
-  droplet_image    = var.droplet_image
-  droplet_snapshot = data.digitalocean_droplet_snapshot.eastblue.id
-}
-
 resource "digitalocean_droplet" "droplet" {
-  image    = local.droplet_image
+  image    = try(data.digitalocean_droplet_snapshot.eastblue[0].id, var.droplet_image)
   name     = var.droplet_name
   region   = var.droplet_region
   size     = var.droplet_size
