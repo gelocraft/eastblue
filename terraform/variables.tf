@@ -1,8 +1,3 @@
-variable "use_droplet_snapshot" {
-  description = "whether to use droplet snapshot or not"
-  type        = bool
-}
-
 variable "droplet_name" {
   description = "digitalocean droplet name"
   type        = string
