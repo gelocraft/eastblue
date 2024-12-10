@@ -4,6 +4,7 @@
     name:
       - eza
       - fzf
+      - starship
       - ripgrep
       - fd-find
       - bat
