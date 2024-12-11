@@ -15,7 +15,7 @@
 
     - name: Clone user dotfiles
       ansible.builtin.git:
-        repo: "https://github.com/geloman-likes-rust/dotfiles"
+        repo: "https://github.com/gelocraft/dotfiles"
         dest: "~/.dotfiles"
       become_user: geloman
 
