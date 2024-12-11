@@ -4,4 +4,4 @@
     src: "~/.dotfiles/.gitconfig"
     dest: "~/.gitconfig"
     state: link
-  become_user: geloman
+  become_user: "{{ username }}"

@@ -3,11 +3,11 @@
     path: "~/.config"
     state: directory
     mode: "0755"
-  become_user: geloman
+  become_user: "{{ username }}"
 
 - name: Symlink neovim config
   ansible.builtin.file:
     src: "~/.dotfiles/nvim"
     dest: "~/.config/nvim"
     state: link
-  become_user: geloman
+  become_user: "{{ username }}"

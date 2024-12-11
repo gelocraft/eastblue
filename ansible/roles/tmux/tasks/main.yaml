@@ -9,4 +9,4 @@
     src: "~/.dotfiles/tmux/.tmux.conf"
     dest: "~/.tmux.conf"
     state: link
-  become_user: geloman
+  become_user: "{{ username }}"

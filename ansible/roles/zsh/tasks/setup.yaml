@@ -4,9 +4,9 @@
     src: "~/.dotfiles/zsh/.zshrc"
     dest: "~/.zshrc"
     state: link
-  become_user: geloman
+  become_user: "{{ username }}"
 
 - name: Set ZSH as default shell
   ansible.builtin.user:
-    name: geloman
+    name: "{{ username }}"
     shell: /usr/bin/zsh

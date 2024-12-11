@@ -1,5 +1,8 @@
+---
 - hosts: all
   become: yes
+  vars:
+    username: gelocraft
   pre_tasks:
     - name: Update and Upgrade packages
       when: ansible_distribution in ["Debian", "Ubuntu"]
@@ -9,7 +12,7 @@
 
     - name: Create User
       ansible.builtin.user:
-        name: geloman
+        name: "{{ username }}"
         groups: sudo
         create_home: true
 
@@ -17,16 +20,7 @@
       ansible.builtin.git:
         repo: "https://github.com/gelocraft/dotfiles"
         dest: "~/.dotfiles"
-      become_user: geloman
-
-    - name: Change dotfiles remote origin
-      ansible.builtin.git:
-        repo: "git@github.com:geloman-likes-rust/dotfiles"
-        dest: "~/.dotfiles"
-        remote: origin
-        clone: no
-        update: no
-      become_user: geloman
+      become_user: "{{ username }}"
 
   roles:
     - common
