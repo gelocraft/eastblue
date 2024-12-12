@@ -1,6 +1,7 @@
 name: Ansible Lint
 
 on:
+  workflow_dispatch:
   push:
     paths:
       - ansible/*
