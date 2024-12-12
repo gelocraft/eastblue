@@ -1,0 +1,6 @@
+---
+- name: Install starship
+  ansible.builtin.command:
+    cmd: "curl -sS https://starship.rs/install.sh | sh"
+    creates: /usr/bin/starship
+  become_user: "{{ username }}"
