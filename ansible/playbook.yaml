@@ -34,4 +34,7 @@
     - neovim
     - nodejs
     - golang
+    - starship
+    - lazygit
+    - fzf
     - lsp
