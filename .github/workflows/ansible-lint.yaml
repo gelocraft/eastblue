@@ -1,0 +1,19 @@
+name: Ansible Lint
+
+on:
+  push:
+    paths:
+      - ansible/*
+
+defaults:
+  run:
+    working-directory: ./ansible
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Yaml Lint
+        run:
+          yamllint .
