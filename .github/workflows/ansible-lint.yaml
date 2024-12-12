@@ -17,5 +17,4 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ansible/ansible-lint@main
       - name: Yaml Lint
-        run:
-          yamllint .
+        run: yamllint .
