@@ -1,0 +1,6 @@
+---
+- name: Install lazygit
+  ansible.builtin.shell:
+    cmd: "go install github.com/jesseduffield/lazygit@latest"
+    creates: "~/.local/share/go/bin/lazygit"
+  become_user: "{{ username }}"
