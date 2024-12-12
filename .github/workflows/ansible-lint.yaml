@@ -15,6 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: ansible/ansible-lint@main
       - name: Yaml Lint
         run:
           yamllint .
