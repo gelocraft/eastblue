@@ -1,2 +1,2 @@
-# noqa playbook.yaml
-# noqa roles/**
+./playbook.yaml
+./roles/**
