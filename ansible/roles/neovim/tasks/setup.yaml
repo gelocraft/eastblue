@@ -1,3 +1,4 @@
+---
 - name: Create XDG_CONFIG_HOME directory
   ansible.builtin.file:
     path: "~/.config"

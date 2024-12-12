@@ -11,7 +11,7 @@
 
 - name: Update apt package index
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
 
 - name: Install Neovim Nightly
   ansible.builtin.apt:

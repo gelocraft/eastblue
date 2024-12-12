@@ -10,6 +10,6 @@
     state: present
 
 - name: Install typescript-language-server
-  ansible.builtin.command: 
+  ansible.builtin.command:
     cmd: "npm install -g typescript typescript-language-server"
     creates: "/usr/bin/typescript-language-server"

@@ -13,7 +13,7 @@
   ansible.builtin.unarchive:
     src: "/tmp/{{ stylua_compress_file }}"
     dest: /usr/local/bin
-    remote_src: yes
+    remote_src: true
 
 - name: Verify Stylua installation
   ansible.builtin.shell: stylua --version

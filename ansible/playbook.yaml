@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  become: yes
+  become: true
   vars:
     username: gelocraft
   pre_tasks:
@@ -8,7 +8,7 @@
       when: ansible_distribution in ["Debian", "Ubuntu"]
       ansible.builtin.apt:
         upgrade: dist
-        update_cache: yes
+        update_cache: true
 
     - name: Create User
       ansible.builtin.user:

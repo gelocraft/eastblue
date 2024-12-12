@@ -13,12 +13,14 @@
 
 - name: Add HashiCorp APT repository
   ansible.builtin.apt_repository:
-    repo: "deb https://apt.releases.hashicorp.com {{ ansible_lsb.codename }} main"
+    repo: >
+      "deb https://apt.releases.hashicorp.codename
+      {{ ansible_lsb.codename }} main"
     state: present
 
 - name: Ensure apt cache is updated
   ansible.builtin.apt:
-    update_cache: yes
+    update_cache: true
 
 - name: Install Terraform
   ansible.builtin.apt:
