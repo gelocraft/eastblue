@@ -3,4 +3,3 @@
   ansible.builtin.command:
     cmd: "curl -sS https://starship.rs/install.sh | sh"
     creates: /usr/local/bin/starship
-  become_user: "{{ username }}"
