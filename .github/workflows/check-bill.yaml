@@ -1,8 +1,6 @@
 name: Check DigitalOcean Bill
 
 on:
-  schedule:
-    - cron: "0 16 * * *" # run once a day at 12 AM (philippine standard time)
   workflow_dispatch:
 
 jobs:
