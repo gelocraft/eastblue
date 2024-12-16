@@ -13,7 +13,7 @@
 
 - name: Add HashiCorp APT repository
   ansible.builtin.apt_repository:
-    repo: "deb https://apt.releases.hashicorp.codename {{ ansible_lsb.codename }} main"  # yamllint disable-line rule:line-length
+    repo: "deb https://apt.releases.hashicorp.com {{ ansible_lsb.codename }} main"  # yamllint disable-line rule:line-length
     state: present
 
 - name: Ensure apt cache is updated
