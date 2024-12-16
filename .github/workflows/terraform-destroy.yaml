@@ -1,4 +1,4 @@
-name: Destroy DigitalOcean Droplet
+name: Destroy Server
 
 on:
   schedule:
