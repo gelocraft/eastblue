@@ -1,4 +1,4 @@
-name: Create DigitalOcean Droplet
+name: Launch Server
 
 on:
   workflow_dispatch:
