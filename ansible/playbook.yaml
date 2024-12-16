@@ -24,17 +24,17 @@
 
   roles:
     - common
-    # - stylua
-    # - docker
-    # - minikube
-    # - terraform
+    - stylua
+    - docker
+    - minikube
+    - terraform
     - git
     - zsh
     - tmux
     - neovim
-    # - nodejs
-    # - golang
+    - nodejs
+    - golang
     - starship
     - lazygit
     - fzf
-    # - lsp
+    - lsp
