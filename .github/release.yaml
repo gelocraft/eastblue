@@ -1,0 +1,26 @@
+---
+changelog:
+  exclude:
+    labels:
+      - ci
+      - revert
+      - editorconfig
+      - documentation
+
+  categories:
+
+    - title: Ansible
+      labels:
+        - ansible
+
+    - title: Terraform
+      labels:
+        - terraform
+
+    - title: Packer
+      labels:
+        - packer
+
+    - title: Other Changes
+      labels:
+        - "*"

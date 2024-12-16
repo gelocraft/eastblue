@@ -1,0 +1,39 @@
+---
+name: Release
+
+on:  # yamllint disable-line rule:truthy
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "release tag"
+        required: true
+      prerelease:
+        description: "pre-release"
+        type: boolean
+        default: false
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+
+    steps:
+      - if: inputs.prerelease == true
+        run: echo "PRERELEASE=--prerelease" >> $GITHUB_ENV
+
+      - name: Release ${{ inputs.release_tag }}
+        if: github.event_name == 'workflow_dispatch'
+        run: gh release create ${{ inputs.release_tag }} $PRERELEASE --generate-notes  # yamllint disable-line rule:line-length
+
+      - name: Release ${{ github.ref_name }}
+        if: github.event_name == 'push'
+        run: gh release create ${{ github.ref_name }} $PRERELEASE --generate-notes  # yamllint disable-line rule:line-length
