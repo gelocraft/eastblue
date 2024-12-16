@@ -1,0 +1,23 @@
+---
+editorconfig:
+  - any-glob-to-any-file: '.editorconfig'
+
+ansible:
+  - any-glob-to-any-file: ['ansible/**']
+
+terraform:
+  - any-glob-to-any-file: ['terraform/*']
+
+packer:
+  - any-glob-to-any-file: ['packer/*']
+
+ci:
+  - head-branch: ['^ci', 'ci']
+  - any-glob-to-any-file: ['.github/actions/**', '.github/workflows/**', '.github/scripts/**']  # yamllint disable-line rule:line-length
+
+documentation:
+  - head-branch: ['^docs', '^documentation']
+  - any-glob-to-any-file: ['docs/**', '**/*.md']
+
+revert:
+  - head-branch: ['^revert', 'revert', '^rollback', 'rollback']
