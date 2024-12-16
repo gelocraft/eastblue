@@ -5,3 +5,17 @@
     dest: "~/.gitconfig"
     state: link
   become_user: "{{ username }}"
+
+- name: Change Remote Url of Dotfiles
+  ansible.builtin.shell:
+    cmd: >
+      "git -C ~/.dotfiles remote set-url
+      origin git@github.com:{{ dotfiles_repo }}.git"
+  become_user: "{{ username }}"
+
+- name: Git Pull Dotfiles Changes on Reboot
+  ansible.builtin.cron:
+    name: git pull dotfiles @reboot
+    special_time: reboot
+    job: "git -C ~/.dotfiles pull --rebase"
+  become_user: "{{ username }}"
