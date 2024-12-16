@@ -1,5 +1,5 @@
 ---
 - name: Install starship
   ansible.builtin.shell:
-    cmd: "curl -sS https://starship.rs/install.sh | sh"
+    cmd: "curl -sS https://starship.rs/install.sh | sh -s -- --yes"
     creates: /usr/local/bin/starship
