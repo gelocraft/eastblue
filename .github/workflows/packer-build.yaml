@@ -23,6 +23,9 @@ jobs:
       DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.release_tag }}
+
       - uses: hashicorp/setup-packer@main
 
       - name: Create Machine Image
