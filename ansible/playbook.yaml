@@ -11,11 +11,14 @@
         upgrade: safe
         update_cache: true
 
-    - name: Create User
+    - name: "Create User {{ username }}"
       ansible.builtin.user:
         name: "{{ username }}"
         groups: sudo
         create_home: true
+
+    - name: "Delete default password of {{ username }}"
+      ansible.builtin.shell: "passwd --delete {{ username }}"
 
     - name: Clone user dotfiles
       ansible.builtin.git:
