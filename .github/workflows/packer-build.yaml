@@ -1,7 +1,16 @@
+---
 name: Create Machine Image
 
-on:
+on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: release tag
+        type: choice
+        default: v0.1.0
+        options:
+          - main
+          - v0.1.0
 
 defaults:
   run:
