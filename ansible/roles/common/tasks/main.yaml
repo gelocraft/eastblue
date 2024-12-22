@@ -20,6 +20,7 @@
       - yamllint
       - ansible-lint
       - shellcheck
+      - luarocks
     state: latest
 
 - name: Symlink batcat to bat
