@@ -13,3 +13,27 @@
   ansible.builtin.command:
     cmd: "npm install -g typescript typescript-language-server"
     creates: "/usr/bin/typescript-language-server"
+
+- name: Install lua_ls tarball
+  ansible.builtin.get_url:
+    url: '{{ lua_ls_archive_url }}'
+    dest: /tmp/lua_ls.tar.gz
+
+- name: Create archive destination
+  ansible.builtin.file:
+    path: /usr/local/lua_ls
+    state: directory
+    mode: '1777'
+
+- name: Extract lua_ls tarball
+  ansible.builtin.unarchive:
+    src: /tmp/lua_ls.tar.gz
+    dest: /usr/local/lua_ls
+    creates: /usr/local/lua_ls/bin/lua-language-server
+    remote_src: true
+
+- name: Symlink lua_ls binary
+  ansible.builtin.file:
+    src: /usr/local/lua_ls/bin/lua-language-server
+    dest: /usr/local/bin/lua-language-server
+    state: link
