@@ -1,4 +1,4 @@
-<h1 align="center">Eastblue - linux</h1>
+<h1 align="center">🌊 Eastblue 🐧</h1>
 <p align="center">A custom machine image tailored for my needs.</p>
 
 <div align="center">
@@ -14,7 +14,7 @@
 </div>
 
 <div align="center">
-    <h3>CLI Tools & Programs</h3>
+    <h3>🛠️ CLI Tools & Programs 💻</h3>
     <table>
         <thead>
             <tr>
