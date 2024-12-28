@@ -100,6 +100,10 @@
                 <td>v22.12.0</td>
             </tr>
             <tr>
+                <td>pipx</td>
+                <td>1.4.3</td>
+            </tr>
+            <tr>
                 <td>pylint</td>
                 <td>3.0.3</td>
             </tr>
@@ -130,6 +134,10 @@
             <tr>
                 <td>terraform-ls</td>
                 <td>0.36.3</td>
+            </tr>
+            <tr>
+                <td>uv</td>
+                <td>latest</td>
             </tr>
             <tr>
                 <td>yamllint</td>
