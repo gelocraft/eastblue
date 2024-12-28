@@ -30,3 +30,8 @@
     src: /usr/bin/batcat
     dest: /usr/local/bin/bat
     state: link
+
+- name: Install uv (python package manager)
+  ansible.builtin.shell:
+    cmd: pipx install uv
+  become_user: "{{ username }}"
