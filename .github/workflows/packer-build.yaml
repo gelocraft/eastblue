@@ -7,9 +7,10 @@ on:  # yamllint disable-line rule:truthy
       release_tag:
         description: release tag
         type: choice
-        default: v0.2.1
+        default: v0.3.0
         options:
           - main
+          - v0.3.0
           - v0.2.1
           - v0.2.0
           - v0.1.1
