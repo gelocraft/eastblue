@@ -2,5 +2,5 @@
 - name: Install fzf with go
   ansible.builtin.shell:
     cmd: "GOPATH=~/.go go install github.com/junegunn/fzf@latest"
-    creates: "~/.local/share/go/bin/fzf"
+    creates: "~/.go/bin/fzf"
   become_user: "{{ username }}"

@@ -2,7 +2,7 @@
 - name: Install lazygit
   ansible.builtin.shell:
     cmd: "GOPATH=~/.go go install github.com/jesseduffield/lazygit@latest"
-    creates: "~/.local/share/go/bin/lazygit"
+    creates: "~/.go/bin/lazygit"
   become_user: "{{ username }}"
 
 - name: Symlink lazygit config
