@@ -36,10 +36,6 @@
                 <td>0.24.0</td>
             </tr>
             <tr>
-                <td>docker</td>
-                <td>27.4.1</td>
-            </tr>
-            <tr>
                 <td>eza</td>
                 <td>v0.18.2</td>
             </tr>

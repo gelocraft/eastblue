@@ -29,7 +29,6 @@
   roles:
     - common
     - stylua
-    - docker
     - minikube
     - terraform
     - git
