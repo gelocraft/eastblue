@@ -56,5 +56,5 @@ jobs:
           TF_VAR_droplet_size: ${{ inputs.size }}
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
 
-      - name: ${{ env.DROPLET_IPV4_ADDRESS }}
+      - name: Print IPv4 Address
         run: echo $DROPLET_IPV4_ADDRESS
