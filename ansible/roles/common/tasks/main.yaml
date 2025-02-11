@@ -26,6 +26,7 @@
       - ansible-lint
       - shellcheck
       - luarocks
+      - podman
     state: latest
 
 - name: Symlink batcat to bat
