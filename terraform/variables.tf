@@ -23,7 +23,7 @@ variable "droplet_region" {
   type        = string
 }
 
-variable "droplet_ssh_keys" {
-  description = "digitalocean droplet ssh key fingerprints"
-  type        = list(string)
+variable "droplet_ssh_key" {
+  description = "digitalocean droplet ssh key fingerprint"
+  type        = string
 }

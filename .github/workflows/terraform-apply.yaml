@@ -4,6 +4,9 @@ name: Launch Server
 on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
     inputs:
+      ssh_key:
+        description: root ssh key
+        required: true
       size:
         description: droplet size
         type: choice
@@ -29,6 +32,15 @@ jobs:
         with:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
+      - name: Generate Public SSH key fingerprint
+        run: |
+          echo "${{ inputs.ssh_key }}" > "$RUNNER_TEMP/eastblue.pub"
+          ssh-keygen -E md5 -lf "$RUNNER_TEMP/eastblue.pub" \
+          | awk '{print $2}' | sed 's/^MD5://' \
+          > "$RUNNER_TEMP/ssh_key_fingerprint.txt"
+          echo "TF_VAR_droplet_ssh_key=\
+          $(cat "$RUNNER_TEMP/ssh_key_fingerprint.txt")" >> $GITHUB_ENV
+
       - name: Terraform Init
         run: terraform init
 
@@ -38,10 +50,11 @@ jobs:
       - name: Terraform Apply
         run: |
           terraform apply -auto-approve
-          echo "DROPLET_IPV4_ADDRESS=$(terraform output -raw droplet_ipv4_address)" >> $GITHUB_ENV
+          echo "DROPLET_IPV4_ADDRESS=\
+          $(terraform output -raw droplet_ipv4_address)" >> $GITHUB_ENV
         env:
-          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
           TF_VAR_droplet_size: ${{ inputs.size }}
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
 
       - name: ${{ env.DROPLET_IPV4_ADDRESS }}
         run: echo $DROPLET_IPV4_ADDRESS
