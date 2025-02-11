@@ -1,8 +1,9 @@
+---
 name: Destroy Server
 
-on:
+on:  # yamllint disable-line rule:truthy
   schedule:
-    - cron: "0 16 * * *" # run once a day at 12 AM (philippine standard time)
+    - cron: "0 16 * * *"  # run once a day at 12 AM (philippine standard time)
   workflow_dispatch:
 
 defaults:
@@ -24,10 +25,18 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - run: echo "DROPLET_SIZE=$(terraform output -json | jq -r '.droplet_size.value // empty')" >> $GITHUB_ENV
+      - name: Set environment variables
+        run: |
+          echo "DROPLET_SIZE=\
+          $(terraform output -json | jq -r '.droplet_size.value // empty')" \
+          >> $GITHUB_ENV
+          echo "SSH_FINGERPRINT=\
+          $(terraform output -json | jq -r '.ssh_fingerprint.value // empty')" \
+          >> $GITHUB_ENV
 
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         env:
-          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
           TF_VAR_droplet_size: ${{ env.DROPLET_SIZE }}
+          TF_VAR_droplet_ssh_key: ${{ env.SSH_FINGERPRINT }}
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
