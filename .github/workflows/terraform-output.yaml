@@ -1,6 +1,7 @@
+---
 name: Show Outputs
 
-on:
+on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
 
 defaults:
