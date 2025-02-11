@@ -100,6 +100,10 @@
                 <td>1.4.3</td>
             </tr>
             <tr>
+                <td>podman</td>
+                <td>unknown</td>
+            </tr>
+            <tr>
                 <td>pylint</td>
                 <td>3.0.3</td>
             </tr>
