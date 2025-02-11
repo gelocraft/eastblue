@@ -25,18 +25,9 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
-      - name: Set environment variables
-        run: |
-          echo "DROPLET_SIZE=\
-          $(terraform output -json | jq -r '.droplet_size.value // empty')" \
-          >> $GITHUB_ENV
-          echo "SSH_FINGERPRINT=\
-          $(terraform output -json | jq -r '.ssh_fingerprint.value // empty')" \
-          >> $GITHUB_ENV
-
       - name: Terraform Destroy
         run: terraform destroy -auto-approve
         env:
-          TF_VAR_droplet_size: ${{ env.DROPLET_SIZE }}
-          TF_VAR_droplet_ssh_key: ${{ env.SSH_FINGERPRINT }}
+          TF_VAR_droplet_size: "dummy-default"
+          TF_VAR_droplet_ssh_key: "dummy-default"
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
