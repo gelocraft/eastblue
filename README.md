@@ -36,6 +36,14 @@
                 <td>0.24.0</td>
             </tr>
             <tr>
+                <td>curl</td>
+                <td>8.5.0</td>
+            </tr>
+            <tr>
+                <td>direnv</td>
+                <td>2.32.1</td>
+            </tr>
+            <tr>
                 <td>eza</td>
                 <td>v0.18.2</td>
             </tr>
@@ -46,6 +54,10 @@
             <tr>
                 <td>fzf</td>
                 <td>0.57</td>
+            </tr>
+            <tr>
+                <td>gcc</td>
+                <td>13.3.0</td>
             </tr>
             <tr>
                 <td>git-delta</td>
@@ -101,7 +113,7 @@
             </tr>
             <tr>
                 <td>podman</td>
-                <td>unknown</td>
+                <td>4.9.3</td>
             </tr>
             <tr>
                 <td>pylint</td>
@@ -128,16 +140,36 @@
                 <td>2.0.1</td>
             </tr>
             <tr>
+                <td>tar</td>
+                <td>GNU tar 1.35</td>
+            </tr>
+            <tr>
                 <td>terraform</td>
-                <td>v1.10.3</td>
+                <td>v1.10.5</td>
             </tr>
             <tr>
                 <td>terraform-ls</td>
-                <td>0.36.3</td>
+                <td>0.36.4</td>
+            </tr>
+            <tr>
+                <td>universal-ctags</td>
+                <td>5.9.0</td>
+            </tr>
+            <tr>
+                <td>unzip</td>
+                <td>UnZip 6.00</td>
             </tr>
             <tr>
                 <td>uv</td>
                 <td>latest</td>
+            </tr>
+            <tr>
+                <td>vim</td>
+                <td>9.1</td>
+            </tr>
+            <tr>
+                <td>wget</td>
+                <td>1.21.4</td>
             </tr>
             <tr>
                 <td>yamllint</td>
