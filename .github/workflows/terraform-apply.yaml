@@ -5,8 +5,9 @@ on:  # yamllint disable-line rule:truthy
   workflow_dispatch:
     inputs:
       ssh_key:
-        description: root ssh key
         required: true
+        description: ssh public key
+        default: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP4A1vAHl4TmJcGIjLlhLrouMMPfaBDbKGXfVeCGpWci geloman@eastblue  # yamllint disable-line rule:line-length
       size:
         description: droplet size
         type: choice
