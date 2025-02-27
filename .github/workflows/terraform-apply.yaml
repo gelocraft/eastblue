@@ -20,42 +20,68 @@ on:  # yamllint disable-line rule:truthy
           - s-2vcpu-8gb-amd
           - s-4vcpu-8gb
 
-defaults:
-  run:
-    working-directory: ./terraform
-
 jobs:
-  terraform:
+  setup_ssh_pubkey:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
-        with:
-          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+      - name: Update SSH Public Key
+        run: |
+          echo {\"public_key\":\""${{ inputs.ssh_key }}"\"} \
+          > "$RUNNER_TEMP/pubkey.json"
+          curl -o /dev/null -s -w "%{http_code}\n" \
+              -X POST "https://api.digitalocean.com/v2/account/keys" \
+              -H "Authorization: Bearer $DIGITALOCEAN_TOKEN:" \
+              -H "Content-Type: application/json" \
+              -d @"$RUNNER_TEMP/pubkey.json"
+        env:
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
 
       - name: Generate Public SSH key fingerprint
         run: |
           echo "${{ inputs.ssh_key }}" > "$RUNNER_TEMP/eastblue.pub"
           ssh-keygen -E md5 -lf "$RUNNER_TEMP/eastblue.pub" \
           | awk '{print $2}' | sed 's/^MD5://' \
-          > "$RUNNER_TEMP/ssh_key_fingerprint.txt"
+          > "./ssh_key_fingerprint.txt"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ssh-key-fingerprint
+          path: "./ssh_key_fingerprint.txt"
+
+  terraform:
+    runs-on: ubuntu-latest
+    needs: setup_ssh_pubkey
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: ssh-key-fingerprint
+          path: "${{ runner.temp }}"
+
+      - name: Set TF_VAR_droplet_ssh_key
+        run: |
           echo "TF_VAR_droplet_ssh_key=\
-          $(cat "$RUNNER_TEMP/ssh_key_fingerprint.txt")" >> $GITHUB_ENV
+          $(cat "${{ runner.temp }}/ssh_key_fingerprint.txt")" >> $GITHUB_ENV
 
       - name: Terraform Init
         run: terraform init
+        working-directory: ./terraform
 
       - name: Terraform Validate
         run: terraform validate
+        working-directory: ./terraform
 
       - name: Terraform Apply
-        run: |
-          terraform apply -auto-approve
-          echo "DROPLET_IPV4_ADDRESS=\
-          $(terraform output -raw droplet_ipv4_address)" >> $GITHUB_ENV
+        run: terraform apply -auto-approve
+        working-directory: ./terraform
         env:
           TF_VAR_droplet_size: ${{ inputs.size }}
           DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
 
       - name: Print IPv4 Address
-        run: echo $DROPLET_IPV4_ADDRESS
+        run: terraform output -raw droplet_ipv4_address
+        working-directory: ./terraform
