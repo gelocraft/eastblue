@@ -1,0 +1,23 @@
+---
+name: Delete SSH Pub Keys
+
+on:  # yamllint disable-line rule:truthy
+  workflow_dispatch:
+
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+      # - uses: actions/checkout@v4
+      - name: Delete SSH Public Keys
+        run: |
+          curl -s \
+              -H "Authorization: Bearer ${DIGITALOCEAN_TOKEN}" \
+              "https://api.digitalocean.com/v2/account/keys" |
+              jq '.ssh_keys[].id' |
+              xargs -r -I {} \
+                  curl -X DELETE -s -w "%{http_code}\n" \
+                  -H "Authorization: Bearer ${DIGITALOCEAN_TOKEN}" \
+                  "https://api.digitalocean.com/v2/account/keys/{}"
+        env:
+          DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
