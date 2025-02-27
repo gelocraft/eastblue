@@ -2,6 +2,8 @@
 name: Delete SSH Pub Keys
 
 on:  # yamllint disable-line rule:truthy
+  schedule:
+    - cron: "0 16 * * 5"  # runs every friday at 12 AM in my timezone
   workflow_dispatch:
 
 jobs:
