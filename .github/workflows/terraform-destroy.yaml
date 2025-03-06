@@ -2,8 +2,8 @@
 name: Destroy Server
 
 on:  # yamllint disable-line rule:truthy
-  schedule:
-    - cron: "0 16 * * *"  # run once a day at 12 AM (philippine standard time)
+  # schedule:
+  #   - cron: "0 16 * * *"  # run once a day at 12 AM (philippine standard time)
   workflow_dispatch:
 
 defaults:
