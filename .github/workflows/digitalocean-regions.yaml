@@ -1,0 +1,21 @@
+name: List All Regions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  curl:
+    runs-on: ubuntu-latest
+    env:
+      DIGITALOCEAN_TOKEN: ${{ secrets.DIGITALOCEAN_TOKEN }}
+    steps:
+      - name: GET /v2/apps/regions
+        run: |
+          ALL_REGIONS=$(curl -X GET \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer $DIGITALOCEAN_TOKEN" \
+            "https://api.digitalocean.com/v2/apps/regions" | jq '.regions')
+          echo "ALL_REGIONS=$ALL_REGIONS" >> $GITHUB_ENV
+
+      - name: "this month bill: ${{ env.ALL_REGIONS }}"
+        run: echo $ALL_REGIONS
