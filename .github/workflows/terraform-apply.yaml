@@ -11,13 +11,13 @@ on:  # yamllint disable-line rule:truthy
       size:
         description: droplet size
         type: choice
-        default: s-1vcpu-1gb-amd
+        default: s-2vcpu-4gb
         options:
-          - s-1vcpu-1gb-amd
-          - s-1vcpu-2gb-amd
-          - s-2vcpu-2gb-amd
-          - s-2vcpu-4gb-amd
-          - s-2vcpu-8gb-amd
+          - s-1vcpu-1gb
+          - s-1vcpu-2gb
+          - s-2vcpu-2gb
+          - s-2vcpu-4gb
+          - s-2vcpu-8gb
           - s-4vcpu-8gb
 
 jobs:
