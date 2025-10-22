@@ -24,6 +24,7 @@
       ansible.builtin.git:
         repo: "https://github.com/{{ dotfiles_repo }}"
         dest: "~/.dotfiles"
+        recursive: true
       become_user: "{{ username }}"
 
   roles:
