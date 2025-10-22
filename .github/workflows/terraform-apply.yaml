@@ -7,7 +7,7 @@ on:  # yamllint disable-line rule:truthy
       ssh_key:
         required: true
         description: ssh public key
-        default: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP4A1vAHl4TmJcGIjLlhLrouMMPfaBDbKGXfVeCGpWci geloman@eastblue  # yamllint disable-line rule:line-length
+        default: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICb5t37oGwef3/X/i1Lh/mDBGUWbFfv8xepIOOBtgE/0 gelocraft@eastblue
       size:
         description: droplet size
         type: choice
